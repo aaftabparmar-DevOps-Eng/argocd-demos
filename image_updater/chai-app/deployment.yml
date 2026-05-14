@@ -3,10 +3,6 @@ kind: Deployment
 
 metadata:
   name: chai-app
-  annotations:
-    argocd-image-updater.argoproj.io/image-list: chai=aaftabparmar217/chai-devops
-    argocd-image-updater.argoproj.io/chai.update-strategy: latest
-    argocd-image-updater.argoproj.io/write-back-method: git
 
 spec:
   replicas: 3
@@ -23,7 +19,7 @@ spec:
     spec:
       containers:
       - name: chai-app
-        image: aaftabparmar217/chai-devops:v1.0.1
+        image: aaftabparmar217/chai-devops:v1.0.0
 
         ports:
         - containerPort: 80
