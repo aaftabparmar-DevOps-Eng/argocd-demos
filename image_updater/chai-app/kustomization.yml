@@ -8,4 +8,4 @@ resources:
 
 images:
   - name: aaftabparmar217/chai-devops
-    newTag: v1.0.0
+    newTag: v1.0.4
