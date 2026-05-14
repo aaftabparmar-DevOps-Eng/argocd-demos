@@ -2,34 +2,29 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 
 metadata:
-  name: chai-app
-  namespace: argocd
+name: chai-app
+namespace: argocd
 
-  annotations:
-
-    argocd-image-updater.argoproj.io/image-list: chai-app=aaftabparmar217/chai-devops
-
-    argocd-image-updater.argoproj.io/chai-app.update-strategy: latest
-
-    argocd-image-updater.argoproj.io/write-back-method: git
-
-    argocd-image-updater.argoproj.io/write-back-target: kustomization
-
-    argocd-image-updater.argoproj.io/git-branch: main
+annotations:
+argocd-image-updater.argoproj.io/image-list: chai-app=aaftabparmar217/chai-devops
+argocd-image-updater.argoproj.io/chai-app.update-strategy: latest
+argocd-image-updater.argoproj.io/write-back-method: git:secret:argocd/argocd-image-updater-git-creds
+argocd-image-updater.argoproj.io/write-back-target: kustomization
+argocd-image-updater.argoproj.io/git-branch: main
 
 spec:
-  project: default
+project: default
 
-  source:
-    repoURL: https://github.com/aaftabparmar-DevOps-Eng/argocd-demos.git
-    targetRevision: main
-    path: image_updater/chai-app
+source:
+repoURL: https://github.com/aaftabparmar-DevOps-Eng/argocd-demos.git
+targetRevision: main
+path: image_updater/chai-app
 
-  destination:
-    server: https://kubernetes.default.svc
-    namespace: default
+destination:
+server: https://kubernetes.default.svc
+namespace: default
 
-  syncPolicy:
-    automated:
-      prune: true
-      selfHeal: true
+syncPolicy:
+automated:
+prune: true
+selfHeal: true
