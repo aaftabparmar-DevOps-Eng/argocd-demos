@@ -23,8 +23,7 @@ spec:
     spec:
       containers:
       - name: chai-app
-
-        image: aaftabparmar217/chai-devops:v1.0.0
+        image: aaftabparmar217/chai-devops:v1.0.1
 
         ports:
         - containerPort: 80
