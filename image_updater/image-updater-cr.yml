@@ -1,0 +1,23 @@
+apiVersion: argocd-image-updater.argoproj.io/v1alpha1
+kind: ImageUpdater
+metadata:
+  name: chai-app
+  namespace: argocd
+spec:
+  imageUpdaterConfig:
+    applications:
+      - name: chai-app
+        namespace: argocd
+
+        images:
+          - image: aaftabparmar217/chai-devops
+            strategy: latest
+
+        git:
+          repository: https://github.com/aaftabparmar-DevOps-Eng/argocd-demos.git
+          branch: main
+          writeBackTarget: kustomization
+
+          credentials:
+            secretRef:
+              name: argocd-image-updater-git-creds
